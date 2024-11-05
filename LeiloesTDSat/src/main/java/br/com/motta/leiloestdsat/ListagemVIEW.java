@@ -8,6 +8,7 @@ public class ListagemVIEW extends javax.swing.JFrame {
 
     public ListagemVIEW() {
         initComponents();
+        listarProdutos();
     }
 
     @SuppressWarnings("unchecked")
@@ -134,7 +135,7 @@ public class ListagemVIEW extends javax.swing.JFrame {
         ProdutosDAO produtosdao = new ProdutosDAO();
 
         //produtosdao.venderProduto(Integer.parseInt(id));
-        listarProdutos();
+
     }//GEN-LAST:event_btnVenderActionPerformed
 
     /**
@@ -197,7 +198,7 @@ public class ListagemVIEW extends javax.swing.JFrame {
             for (int i = 0; i < listagem.size(); i++) {
                 model.addRow(new Object[]{
                     listagem.get(i).getId(),
-                    listagem.get(i).getNome(txtNome.getText()),
+                    listagem.get(i).getNome(),
                     listagem.get(i).getValor(),
                     listagem.get(i).getStatus()
                 });

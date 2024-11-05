@@ -6,14 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import javax.annotation.processing.Generated;
 
-@Entity(name = "produtos")
+@Entity(name = "Produtos")
 public class ProdutosDTO {
 
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
-    private int valor;
+    private double valor;
     private String status;
 
     public ProdutosDTO() {
@@ -26,15 +26,15 @@ public class ProdutosDTO {
         this.status = status;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getNome(String text) {
+    public String getNome() {
         return nome;
     }
 
@@ -42,11 +42,11 @@ public class ProdutosDTO {
         this.nome = nome;
     }
 
-    public Integer getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 
@@ -58,4 +58,5 @@ public class ProdutosDTO {
         this.status = status;
     }
 
+    
 }
