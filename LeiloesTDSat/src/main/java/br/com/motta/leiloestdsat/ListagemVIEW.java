@@ -2,6 +2,7 @@ package br.com.motta.leiloestdsat;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ListagemVIEW extends javax.swing.JFrame {
@@ -130,12 +131,10 @@ public class ListagemVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-        String id = id_produto_venda.getText();
-
-        ProdutosDAO produtosdao = new ProdutosDAO();
-
-        //produtosdao.venderProduto(Integer.parseInt(id));
-
+        ProdutosDAO.venderProduto(WIDTH);
+        JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+        this.dispose();
+        this.setVisible(true);
     }//GEN-LAST:event_btnVenderActionPerformed
 
     /**
@@ -206,6 +205,15 @@ public class ListagemVIEW extends javax.swing.JFrame {
         } catch (Exception e) {
         }
 
+    }
+
+    private String getId() {
+        int posicao = listaProdutos.getSelectedRow();
+        if (posicao == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um item da tabela.");
+        }
+
+        return (String) listaProdutos.getValueAt(posicao, 0);
     }
 
 }

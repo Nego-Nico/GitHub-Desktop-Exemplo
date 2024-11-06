@@ -35,4 +35,31 @@ public class ProdutosDAO {
         }
         return lista;
     }
+
+    public static void venderProduto(int id) {
+        EntityManager manager = ConectaDAO.conectar();
+        try {
+            manager.getTransaction().begin();
+            ProdutosDTO p = manager.find(ProdutosDTO.class, id);
+            if (p != null) {
+                p.setStatus("Vendido");
+                manager.merge(p);
+                manager.getTransaction().commit();
+
+            } else {
+                System.out.println("Produto não encontrado!");
+                manager.getTransaction().rollback();
+
+            }
+
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            
+        } finally {
+            ConectaDAO.desconectar();
+        }
+    }
 }
